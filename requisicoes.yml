@@ -7,85 +7,132 @@ meta:
   modified: 1764769685260
   description: ""
 collection:
-  - url: localhost:3000/
-    name: Teste API
+  - name: requisicoes de teste
     meta:
-      id: req_13d3c64f5a4c43f287bd14a693e07aec
-      created: 1788302256555
-      modified: 1788302395061
-      isPrivate: false
+      id: fld_848e9c3ec0224c72a139dacf2f032f2a
+      created: 1790123530890
+      modified: 1790123530890
+      sortKey: -1790123530890
       description: ""
-      sortKey: -1788302256555
-    method: GET
-    headers:
-      - name: User-Agent
-        value: insomnia/12.1.0
-        description: ""
-        disabled: false
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: localhost:3000/test
-    name: Teste conexão banco
+    children:
+      - url: localhost:3000/
+        name: Teste API
+        meta:
+          id: req_ce291dfd176249f6a9e733958e9f400c
+          created: 1788302256555
+          modified: 1790123549603
+          isPrivate: false
+          description: ""
+          sortKey: -1790123549580
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/test
+        name: Teste conexão banco
+        meta:
+          id: req_f18786652eb0401ba0e8cbbd20e1cc72
+          created: 1788303349206
+          modified: 1790123615691
+          isPrivate: false
+          description: ""
+          sortKey: -1790123549780
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/test/tables
+        name: Teste listar tabelas banco
+        meta:
+          id: req_6220f280345e4f8cb26460857634984d
+          created: 1788908475528
+          modified: 1790123611368
+          isPrivate: false
+          description: ""
+          sortKey: -1790123549680
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Generos
     meta:
-      id: req_7fdad9d9020f4f47ba91aafd1914acd4
-      created: 1788303349206
-      modified: 1788303379110
-      isPrivate: false
+      id: fld_c6acce94eab24e029b48a73f515070f1
+      created: 1790123625070
+      modified: 1790123683749
+      sortKey: -1790123625520
       description: ""
-      sortKey: -1788302256505
-    method: GET
-    headers:
-      - name: User-Agent
-        value: insomnia/12.1.0
-        description: ""
-        disabled: false
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
-  - url: localhost:3000/test/tables
-    name: Teste listar tabelas banco
-    meta:
-      id: req_6ccdb19d8ce7431ea8b39a9b85077f25
-      created: 1788908475528
-      modified: 1788908510203
-      isPrivate: false
-      description: ""
-      sortKey: -1788302256455
-    method: GET
-    headers:
-      - name: User-Agent
-        value: insomnia/12.1.0
-        description: ""
-        disabled: false
-    settings:
-      renderRequestBody: true
-      encodeUrl: true
-      followRedirects: global
-      cookies:
-        send: true
-        store: true
-      rebuildPath: true
+    children:
+      - url: localhost:3000/generos
+        name: Cria genero
+        meta:
+          id: req_e0fb27e11bdb46fb976560882112f5d6
+          created: 1790123452431
+          modified: 1790124016378
+          isPrivate: false
+          description: ""
+          sortKey: -1790123687825
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Ação"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_99d30891da4bdcebc63947a8fc17f076de878684
-    created: 1788908155299
-    modified: 1788908155299
+    created: 1790117729447
+    modified: 1790117729447
 environments:
   name: Base Environment
   meta:
     id: env_99d30891da4bdcebc63947a8fc17f076de878684
-    created: 1788908155295
-    modified: 1788908155295
+    created: 1790117729444
+    modified: 1790117729444
     isPrivate: false
