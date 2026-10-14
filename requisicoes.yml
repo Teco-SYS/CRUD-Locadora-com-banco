@@ -7,18 +7,18 @@ meta:
   modified: 1764769685260
   description: ""
 collection:
-  - name: requisicoes de teste
+  - name: Testes
     meta:
-      id: fld_848e9c3ec0224c72a139dacf2f032f2a
+      id: fld_437f3f99c15742ddb479bb7711b8c4f5
       created: 1790123530890
-      modified: 1790123530890
+      modified: 1791931771698
       sortKey: -1790123530890
       description: ""
     children:
       - url: localhost:3000/
         name: Teste API
         meta:
-          id: req_ce291dfd176249f6a9e733958e9f400c
+          id: req_4a8ba3aa83c14b759a107bf21b77656b
           created: 1788302256555
           modified: 1790123549603
           isPrivate: false
@@ -41,7 +41,7 @@ collection:
       - url: localhost:3000/test
         name: Teste conexão banco
         meta:
-          id: req_f18786652eb0401ba0e8cbbd20e1cc72
+          id: req_4dbaa12880944f3d8d7eccc0c40aaa9f
           created: 1788303349206
           modified: 1790123615691
           isPrivate: false
@@ -64,7 +64,7 @@ collection:
       - url: localhost:3000/test/tables
         name: Teste listar tabelas banco
         meta:
-          id: req_6220f280345e4f8cb26460857634984d
+          id: req_234e457fe4914ecea9591a9dde538ccf
           created: 1788908475528
           modified: 1790123611368
           isPrivate: false
@@ -86,7 +86,7 @@ collection:
           rebuildPath: true
   - name: Generos
     meta:
-      id: fld_c6acce94eab24e029b48a73f515070f1
+      id: fld_5766beae47fe45e595e4e28a6bc076dc
       created: 1790123625070
       modified: 1790123683749
       sortKey: -1790123625520
@@ -95,9 +95,9 @@ collection:
       - url: localhost:3000/generos
         name: Cria genero
         meta:
-          id: req_e0fb27e11bdb46fb976560882112f5d6
+          id: req_e32db7d156944f44b7ca6df12c6b9724
           created: 1790123452431
-          modified: 1790124016378
+          modified: 1791931787612
           isPrivate: false
           description: ""
           sortKey: -1790123687825
@@ -106,7 +106,7 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"nome": "Ação"
+            	"nome": "Suspense"
             }
         headers:
           - name: Content-Type
@@ -123,16 +123,145 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: localhost:3000/generos
+        name: Lista todos generos
+        meta:
+          id: req_929fe33f894c4ddcb317104582760dd2
+          created: 1791931735576
+          modified: 1791938878856
+          isPrivate: false
+          description: ""
+          sortKey: -1790123618802.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Filmes
+    meta:
+      id: fld_3852bf0ccca5482a807f4aed459976c5
+      created: 1791933217972
+      modified: 1791933217972
+      sortKey: -1791933217972
+      description: ""
+    children:
+      - url: localhost:3000/filmes
+        name: Cria filme
+        meta:
+          id: req_63f8496859724e77a936333dcb54a4e2
+          created: 1791933224127
+          modified: 1791939873278
+          isPrivate: false
+          description: ""
+          sortKey: -1791933224127
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"titulo": "Homem aranha",
+            	"diretoId": "1",
+            	"genero": [
+            		1
+            	]
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Diretores
+    meta:
+      id: fld_5916af2cb7eb4fe8b242d13692ba3cc3
+      created: 1791936740663
+      modified: 1791936740663
+      sortKey: -1791028421746
+      description: ""
+    children:
+      - url: localhost:3000/diretores
+        name: Cria diretor
+        meta:
+          id: req_0113cbd122e7404fbc35bfb15054c2e6
+          created: 1791936740664
+          modified: 1791938754314
+          isPrivate: false
+          description: ""
+          sortKey: -1791933224127
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"nome": "Mateus Lindo",
+            	"diretoId": ""
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: localhost:3000/diretores
+        name: Lista todos diretores
+        meta:
+          id: req_11b85d154d434637a23f9b37416e8851
+          created: 1791938858409
+          modified: 1791938864824
+          isPrivate: false
+          description: ""
+          sortKey: -1791028455976
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.1.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_99d30891da4bdcebc63947a8fc17f076de878684
-    created: 1790117729447
-    modified: 1790117729447
+    created: 1791931021057
+    modified: 1791931021057
 environments:
   name: Base Environment
   meta:
     id: env_99d30891da4bdcebc63947a8fc17f076de878684
-    created: 1790117729444
-    modified: 1790117729444
+    created: 1791931021054
+    modified: 1791931021054
     isPrivate: false

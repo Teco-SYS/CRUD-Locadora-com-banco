@@ -1,7 +1,7 @@
 const filmeModel = require("../models/FilmeModel")
 
 const filmeController = {
-    async getAllFilmes (REQ, RES) {
+    async getAllFilmes (req, res) {
         const filmes = await filmeModel.getAllFilmes()
 
         return resizeBy.json(filmes)
@@ -11,7 +11,7 @@ const filmeController = {
         const {
             titulo,
             diretorId,
-            generos
+            generos,
         } = req.body
 
         const filme = {
