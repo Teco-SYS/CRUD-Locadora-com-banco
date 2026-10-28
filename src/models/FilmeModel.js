@@ -2,54 +2,76 @@ const connection = require("../database/connection")
 
 const FilmeModel = {
     async findAll() {
-        return await connection.raw("SELECT * FROM filmes")
+        return await connection("filmes")
     },
 
     async create(filme, generos) {
         const { titulo, diretorId } = filme
 
-        const insereFilme = await connection.raw(
-            "INSERT INTO filmes (titulo, diretor_id) VALUES (?, ?)",
-            [titulo, diretorId]
-        )
+        const insereFilme = await connection("filmes").insert({
+            titulo,
+            diretor_id: diretorId
+        })
 
-        const filmeId = insereFilme.lastID
+        const [filmeId] = insereFilme
 
         // inserir um relacionamento para o novo filme para cada genero
-        if(generos && generos.length > 0) {
-            for( const generoId of generos ) {
-                await connection.raw(
-                    "INSERT INTO filmes_generos (filme_id, genero_id) VALUES (?, ?)",
-                    [filmeId, generoId]
-                )
+        if (generos && generos.length > 0) {
+            for (const generoId of generos) {
+                await connection("filme_generos").insert({
+                    filmeId: filmeId,
+                    generoId: generoId
+                })
             }
         }
 
-        return filmeId        
+        return filmeId
     },
 
-    async findById( id ) {
-        const filmeResult = await connection.raw(
-            "SELECT * FROM filmes WHERE id = ?",
-            [ id ]
-        )
+    async findById(id) {
+        const filme = await connection("filmes")
+            .where({ id })
+            .first()
 
-        const filme = filmeResult[0]
+        if (!filme) return null
 
-        if( !filme ) return null
-
-        const generos = await connection.raw(`
-            SELECT g.id, g.nome FROM generos g
-            JOIN filmes_generos fg ON g.id = fg.genero_id
-            WHERE fg.filme_id = ?    
-            `,
-            [ id ]
-        )
+        const generos = await connection("generos")
+            .join("filmes_generos", "generos.id", "filmes_generos.genero_id")
+            .where("filmes_generos.filme_id", id)
+            .select("generos.id", "generos.nome")
 
         return {
             ...filme,
             generos
         }
+    },
+
+    async search(filtros) {
+        const { titulo, diretor, genero } = filtros
+
+        let query = connection("filmes")
+            .leftJoin("filmes_generos", "filmes.id", "filmes_generos.filme_id"
+                .leftjoin("generos", "generos.id", "filmes_generos.genero_id")
+                .select(
+                    "filmes.id",
+                    "filmes.titulo",
+                    "filmes.diretor_id"
+                )
+                .distinct()
+            )
+        if (titulo) {
+            query = query.where("filmes.titulo", like`%${titulo}%`)
+        }
+
+        if (genero) {
+            query = query.where("filmes.diretor_id", diretor)
+        }
+
+        if (diretor) {
+            query = query.where("filmes.diretor_id", diretor)
+        }
+
+        return await query
     }
 }
 
